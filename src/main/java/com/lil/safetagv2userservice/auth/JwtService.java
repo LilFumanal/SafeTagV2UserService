@@ -1,5 +1,6 @@
 package com.lil.safetagv2userservice.auth;
 
+import com.lil.safetagv2userservice.models.Role;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -10,6 +11,7 @@ import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.Map;
+import java.util.UUID;
 
 @Service
 public class JwtService {
@@ -25,10 +27,11 @@ public class JwtService {
         return Keys.hmacShaKeyFor(keyBytes);
     }
 
-    public String generateToken(String userId, String email) {
+    public String generateToken(UUID userId, String email, Role role) {
         return Jwts.builder()
-                .subject(userId) // On met l'ID utilisateur comme sujet principal
-                .claims(Map.of("email", email)) // On ajoute l'email en info supplémentaire
+                .subject(userId.toString())
+                .claims(Map.of("email", email,
+                        "roles", role.name()))
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis() + jwtExpiration))
                 .signWith(getSignKey())

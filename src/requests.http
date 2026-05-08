@@ -1,0 +1,28 @@
+POST http://localhost:8084/api/v1/users/register
+Content-Type: application/json
+
+{
+  "email": "test3@safetag.com",
+  "password": "password123"
+}
+###2eme
+POST http://localhost:8084/users/register
+Content-Type: application/json
+
+{
+"email": "test2@safetag.com",
+"password": "password123"
+}
+###Login
+POST http://localhost:8084/api/v1/auth/login
+Content-Type: application/json
+
+{
+"email": "test3@safetag.com",
+"password": "password123"
+}
+
+###GET
+GET http://localhost:8084/users/ac05f1ef-0fcc-49c7-a147-24a60b7c345b
+
+

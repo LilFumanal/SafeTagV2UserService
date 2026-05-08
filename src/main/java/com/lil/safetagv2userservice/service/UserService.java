@@ -86,11 +86,10 @@ public class UserService {
     public String login(String email, String password) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("Identifiants invalides"));
-        // 2. Vérifier le mot de passe avec BCrypt
         if (!passwordEncoder.matches(password, user.getPassword())) {
             throw new RuntimeException("Identifiants invalides");
         }
-        return jwtService.generateToken(user.getId().toString(), user.getEmail());
+        return jwtService.generateToken(user.getId(), user.getEmail(), user.getRole());
     }
 
 }

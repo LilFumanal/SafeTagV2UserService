@@ -1,5 +1,6 @@
 package com.lil.safetagv2userservice.entity;
 
+import com.lil.safetagv2userservice.models.Role;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,5 +32,9 @@ public class User {
 
     @Column(nullable = false)
     private LocalDateTime createdAt;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Role role = Role.USER;
 
 }
