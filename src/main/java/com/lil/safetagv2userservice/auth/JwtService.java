@@ -23,9 +23,11 @@ public class JwtService {
     private long jwtExpiration;
 
     private SecretKey getSignKey() {
+        System.out.println("DEBUG USER-SERVICE - Secret utilisé (longueur): " + (secretKey != null ? secretKey.length() : "NULL"));
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         return Keys.hmacShaKeyFor(keyBytes);
     }
+
 
     public String generateToken(UUID userId, String email, Role role) {
         return Jwts.builder()

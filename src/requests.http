@@ -2,7 +2,7 @@ POST http://localhost:8084/api/v1/users/register
 Content-Type: application/json
 
 {
-  "email": "test3@safetag.com",
+  "email": "test4@safetag.com",
   "password": "password123"
 }
 ###2eme
@@ -18,7 +18,7 @@ POST http://localhost:8084/api/v1/auth/login
 Content-Type: application/json
 
 {
-"email": "test3@safetag.com",
+"email": "test4@safetag.com",
 "password": "password123"
 }
 
